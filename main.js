@@ -1,7 +1,8 @@
 const Discord = { Client, Intents, DiscordAPIError } = require('discord.js');
+const config = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
-const token = 'ODc3Njg5ODU1NTIwNDMyMTY4.YR2SYA.ImZCuxQrFKkUSZYjkALia_81NnY';
+const token = config.DiscordToken;
 
 const prefix = '-'
 

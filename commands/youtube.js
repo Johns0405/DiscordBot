@@ -3,10 +3,11 @@ module.exports = {
     description: "this is a youtube command!",
     execute(message, args) {
     var search = require('youtube-search');
+    const config = require('../config.json');
 
     var opts = {
     maxResults: 1,
-    key: 'AIzaSyBy-1ACAI-fGVyuyY7j7xjGIFhSoSTfrEI',
+    key: config.YouTubeKey,
     type: 'video'
     };
 

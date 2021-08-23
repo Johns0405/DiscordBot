@@ -1,8 +1,10 @@
 const Discord = { Client, Intents, DiscordAPIError } = require('discord.js');
 const config = require('./config.json');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_VOICE_STATES] });
 const token = config.DiscordToken;
+
+
 
 const prefix = '-'
 
@@ -16,6 +18,8 @@ for(const file of commandFiles){
 
     client.commands.set(command.name, command);
 }
+
+
 
 client.on('messageCreate', message =>{
 
@@ -79,6 +83,24 @@ client.on('messageCreate', message =>{
 
 
 })
+
+
+//Triggered everytime someone joins a channel, leaves, deafeans, or mutes.
+client.on('voiceStateUpdate', (oldState, newState) => {
+    //General chgannel for bonerjamz
+    const channel = client.channels.cache.get('661851189406728205');
+    let newUserChannel = newState.channel
+    let oldUserChannel = oldState.channel
+  
+  //user entered new channel
+    if((newUserChannel !== null) && oldUserChannel !== newUserChannel ) {
+    // User Joins a voice channel
+    if (newUserChannel.members.size >= 8) {
+        client.commands.get('tenmancount').execute(newUserChannel, channel);
+    }
+  
+    } 
+  })
 
 
 

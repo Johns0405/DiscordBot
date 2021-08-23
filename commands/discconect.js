@@ -8,7 +8,7 @@ module.exports = {
             if( memberTarget.voice) {
             memberTarget.voice.disconnect();
             }
-            message.channel.send(`${member} You fucking buffoon! Why would you even bring up fortnite!`);
+            message.channel.send(`${member} You freaking buffoon! Why would you even bring up fortnite!`);
         }
         else {
             message.channel.send('couldnt disconnect that member');
